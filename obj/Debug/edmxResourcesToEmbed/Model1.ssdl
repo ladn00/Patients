@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище labModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="analyzer">
+    <Key>
+      <PropertyRef Name="code_analyzer" />
+    </Key>
+    <Property Name="code_analyzer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name_analyzer" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="blood_service">
+    <Key>
+      <PropertyRef Name="blood" />
+    </Key>
+    <Property Name="blood" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="service" Type="int" />
+    <Property Name="result" Type="float" />
+    <Property Name="finished" Type="date" />
+    <Property Name="accepted" Type="bit" />
+    <Property Name="status" Type="int" />
+    <Property Name="analyzer" Type="int" />
+    <Property Name="sotrudnik" Type="int" />
+  </EntityType>
+  <EntityType Name="country">
+    <Key>
+      <PropertyRef Name="country_id" />
+    </Key>
+    <Property Name="country_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="country_name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="incurance">
+    <Key>
+      <PropertyRef Name="insurance_id" />
+    </Key>
+    <Property Name="insurance_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="insurance_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="insurance_address" Type="nvarchar" MaxLength="50" />
+    <Property Name="insurance_inn" Type="varchar" MaxLength="50" />
+    <Property Name="insurance_p" Type="varchar" MaxLength="50" />
+    <Property Name="insurance_bik" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="patients">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="full_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="login" Type="nvarchar" MaxLength="50" />
+    <Property Name="pwd" Type="nvarchar" MaxLength="50" />
+    <Property Name="guid" Type="nvarchar(max)" />
+    <Property Name="email" Type="nvarchar(max)" />
+    <Property Name="social_sec_number" Type="nvarchar" MaxLength="50" />
+    <Property Name="phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="passport_s" Type="int" />
+    <Property Name="passport_n" Type="int" />
+    <Property Name="birthdate_timestamp" Type="date" />
+    <Property Name="ipadress" Type="nvarchar" MaxLength="50" />
+    <Property Name="ua" Type="nvarchar(max)" />
+    <Property Name="country" Type="int" />
+    <Property Name="social_type" Type="int" />
+    <Property Name="ein" Type="nvarchar" MaxLength="50" />
+    <Property Name="insurance_name" Type="int" />
+  </EntityType>
+  <EntityType Name="service">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="int" Nullable="false" />
+    <Property Name="Service_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Price" Type="float" />
+  </EntityType>
+  <EntityType Name="social_type">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="social" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="status">
+    <Key>
+      <PropertyRef Name="code_status" />
+    </Key>
+    <Property Name="code_status" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name_status" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+    <Property Name="login" Type="nvarchar" MaxLength="50" />
+    <Property Name="password" Type="nvarchar" MaxLength="50" />
+    <Property Name="ip" Type="nvarchar" MaxLength="50" />
+    <Property Name="lastenter" Type="date" />
+    <Property Name="services" Type="nvarchar(max)" />
+    <Property Name="type" Type="int" />
+  </EntityType>
+  <EntityType Name="user_type">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="type" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_blood_service_analyzer1">
+    <End Role="analyzer" Type="Self.analyzer" Multiplicity="0..1" />
+    <End Role="blood_service" Type="Self.blood_service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="analyzer">
+        <PropertyRef Name="code_analyzer" />
+      </Principal>
+      <Dependent Role="blood_service">
+        <PropertyRef Name="analyzer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_blood_service_service1">
+    <End Role="service" Type="Self.service" Multiplicity="0..1" />
+    <End Role="blood_service" Type="Self.blood_service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="service">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="blood_service">
+        <PropertyRef Name="service" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_blood_service_status1">
+    <End Role="status" Type="Self.status" Multiplicity="0..1" />
+    <End Role="blood_service" Type="Self.blood_service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="status">
+        <PropertyRef Name="code_status" />
+      </Principal>
+      <Dependent Role="blood_service">
+        <PropertyRef Name="status" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_blood_service_user1">
+    <End Role="user" Type="Self.user" Multiplicity="0..1" />
+    <End Role="blood_service" Type="Self.blood_service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="blood_service">
+        <PropertyRef Name="sotrudnik" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_patients_country1">
+    <End Role="country" Type="Self.country" Multiplicity="0..1" />
+    <End Role="patients" Type="Self.patients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="country">
+        <PropertyRef Name="country_id" />
+      </Principal>
+      <Dependent Role="patients">
+        <PropertyRef Name="country" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_patients_incurance1">
+    <End Role="incurance" Type="Self.incurance" Multiplicity="0..1" />
+    <End Role="patients" Type="Self.patients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="incurance">
+        <PropertyRef Name="insurance_id" />
+      </Principal>
+      <Dependent Role="patients">
+        <PropertyRef Name="insurance_name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_patients_social_type1">
+    <End Role="social_type" Type="Self.social_type" Multiplicity="0..1" />
+    <End Role="patients" Type="Self.patients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="social_type">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="patients">
+        <PropertyRef Name="social_type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_user_user_type1">
+    <End Role="user_type" Type="Self.user_type" Multiplicity="0..1" />
+    <End Role="user" Type="Self.user" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user_type">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="user">
+        <PropertyRef Name="type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище labModelContainer">
+    <EntitySet Name="analyzer" EntityType="Self.analyzer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="blood_service" EntityType="Self.blood_service" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="country" EntityType="Self.country" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="incurance" EntityType="Self.incurance" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="patients" EntityType="Self.patients" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="service" EntityType="Self.service" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="social_type" EntityType="Self.social_type" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="status" EntityType="Self.status" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="user_type" EntityType="Self.user_type" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_blood_service_analyzer1" Association="Self.FK_blood_service_analyzer1">
+      <End Role="analyzer" EntitySet="analyzer" />
+      <End Role="blood_service" EntitySet="blood_service" />
+    </AssociationSet>
+    <AssociationSet Name="FK_blood_service_service1" Association="Self.FK_blood_service_service1">
+      <End Role="service" EntitySet="service" />
+      <End Role="blood_service" EntitySet="blood_service" />
+    </AssociationSet>
+    <AssociationSet Name="FK_blood_service_status1" Association="Self.FK_blood_service_status1">
+      <End Role="status" EntitySet="status" />
+      <End Role="blood_service" EntitySet="blood_service" />
+    </AssociationSet>
+    <AssociationSet Name="FK_blood_service_user1" Association="Self.FK_blood_service_user1">
+      <End Role="user" EntitySet="user" />
+      <End Role="blood_service" EntitySet="blood_service" />
+    </AssociationSet>
+    <AssociationSet Name="FK_patients_country1" Association="Self.FK_patients_country1">
+      <End Role="country" EntitySet="country" />
+      <End Role="patients" EntitySet="patients" />
+    </AssociationSet>
+    <AssociationSet Name="FK_patients_incurance1" Association="Self.FK_patients_incurance1">
+      <End Role="incurance" EntitySet="incurance" />
+      <End Role="patients" EntitySet="patients" />
+    </AssociationSet>
+    <AssociationSet Name="FK_patients_social_type1" Association="Self.FK_patients_social_type1">
+      <End Role="social_type" EntitySet="social_type" />
+      <End Role="patients" EntitySet="patients" />
+    </AssociationSet>
+    <AssociationSet Name="FK_user_user_type1" Association="Self.FK_user_user_type1">
+      <End Role="user_type" EntitySet="user_type" />
+      <End Role="user" EntitySet="user" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

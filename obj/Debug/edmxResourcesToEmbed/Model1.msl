@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище labModelContainer" CdmEntityContainer="labEntities">
+    <EntitySetMapping Name="analyzer">
+      <EntityTypeMapping TypeName="labModel.analyzer">
+        <MappingFragment StoreEntitySet="analyzer">
+          <ScalarProperty Name="code_analyzer" ColumnName="code_analyzer" />
+          <ScalarProperty Name="name_analyzer" ColumnName="name_analyzer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="blood_service">
+      <EntityTypeMapping TypeName="labModel.blood_service">
+        <MappingFragment StoreEntitySet="blood_service">
+          <ScalarProperty Name="blood" ColumnName="blood" />
+          <ScalarProperty Name="service" ColumnName="service" />
+          <ScalarProperty Name="result" ColumnName="result" />
+          <ScalarProperty Name="finished" ColumnName="finished" />
+          <ScalarProperty Name="accepted" ColumnName="accepted" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="analyzer" ColumnName="analyzer" />
+          <ScalarProperty Name="sotrudnik" ColumnName="sotrudnik" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="country">
+      <EntityTypeMapping TypeName="labModel.country">
+        <MappingFragment StoreEntitySet="country">
+          <ScalarProperty Name="country_id" ColumnName="country_id" />
+          <ScalarProperty Name="country_name" ColumnName="country_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="incurance">
+      <EntityTypeMapping TypeName="labModel.incurance">
+        <MappingFragment StoreEntitySet="incurance">
+          <ScalarProperty Name="insurance_id" ColumnName="insurance_id" />
+          <ScalarProperty Name="insurance_name" ColumnName="insurance_name" />
+          <ScalarProperty Name="insurance_address" ColumnName="insurance_address" />
+          <ScalarProperty Name="insurance_inn" ColumnName="insurance_inn" />
+          <ScalarProperty Name="insurance_p" ColumnName="insurance_p" />
+          <ScalarProperty Name="insurance_bik" ColumnName="insurance_bik" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="patients">
+      <EntityTypeMapping TypeName="labModel.patients">
+        <MappingFragment StoreEntitySet="patients">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="full_name" ColumnName="full_name" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="pwd" ColumnName="pwd" />
+          <ScalarProperty Name="guid" ColumnName="guid" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="social_sec_number" ColumnName="social_sec_number" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="passport_s" ColumnName="passport_s" />
+          <ScalarProperty Name="passport_n" ColumnName="passport_n" />
+          <ScalarProperty Name="birthdate_timestamp" ColumnName="birthdate_timestamp" />
+          <ScalarProperty Name="ipadress" ColumnName="ipadress" />
+          <ScalarProperty Name="ua" ColumnName="ua" />
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="social_type" ColumnName="social_type" />
+          <ScalarProperty Name="ein" ColumnName="ein" />
+          <ScalarProperty Name="insurance_name" ColumnName="insurance_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="service">
+      <EntityTypeMapping TypeName="labModel.service">
+        <MappingFragment StoreEntitySet="service">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Service_name" ColumnName="Service_name" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="social_type">
+      <EntityTypeMapping TypeName="labModel.social_type">
+        <MappingFragment StoreEntitySet="social_type">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="social" ColumnName="social" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="status">
+      <EntityTypeMapping TypeName="labModel.status">
+        <MappingFragment StoreEntitySet="status">
+          <ScalarProperty Name="code_status" ColumnName="code_status" />
+          <ScalarProperty Name="name_status" ColumnName="name_status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="user">
+      <EntityTypeMapping TypeName="labModel.user">
+        <MappingFragment StoreEntitySet="user">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="ip" ColumnName="ip" />
+          <ScalarProperty Name="lastenter" ColumnName="lastenter" />
+          <ScalarProperty Name="services" ColumnName="services" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="user_type">
+      <EntityTypeMapping TypeName="labModel.user_type">
+        <MappingFragment StoreEntitySet="user_type">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
